@@ -1689,10 +1689,10 @@ local function isGiveTargetValid(ped, coords)
 
     local entity = Utils.Raycast(1|2|4|8|16, coords + vec3(0, 0, 0.5), 0.2)
 
-    if(GetVehiclePedIsIn(ped, false) and not cache.vehicle) then
-		local currCoords=GetWorldPositionOfEntityBone(ped,0);
-		if( #( pedCoords.xy - currCoords.xy ) <= 2.0) then
-			return true;
+    if GetVehiclePedIsIn(ped, false) and not cache.vehicle then
+		local currCoords=GetWorldPositionOfEntityBone(ped,0)
+		if #(pedCoords.xy - currCoords.xy) <= 2.0 then
+			return true
 		end
 	end
 
@@ -1705,10 +1705,10 @@ RegisterNUICallback('giveItem', function(data, cb)
     if usingItem then return end
 
 	if client.giveplayerlist then
-		local coords=GetEntityCoords(playerPed);
+		local coords=GetEntityCoords(playerPed)
 		
-		if(cache.vehicle) then
-			coords=GetWorldPositionOfEntityBone(playerPed,0);
+		if cache.vehicle then
+			coords=GetWorldPositionOfEntityBone(playerPed,0)
 		end
 	
 		local nearbyPlayers = lib.getNearbyPlayers(coords, 3.0)
